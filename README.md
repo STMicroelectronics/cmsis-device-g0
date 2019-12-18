@@ -26,6 +26,7 @@ In this table, you can find the successive versions of this CMSIS Device compone
 CMSIS Device G0 | CMSIS Core | Was delivered in the full MCU package
 --------------- | ---------- | -------------------------------------
 Tag v1.2.0 | Tag v4.5_cm0 | Tag v1.2.0
+Tag v1.3.0 | Tag v5.4.0_cm0 | Tag v1.3.0
 
 The full **STM32CubeG0** MCU package is available [here](https://github.com/STMicroelectronics/STM32CubeG0).
 
