@@ -19,6 +19,10 @@ Two models of publication are proposed for the STM32Cube embedded software :
 
 This **cmsis_device_g0** MCU component repo is one element of the STM32CubeG0 MCU embedded software package, providing the **cmsis device** part.
 
+## Release note
+
+Details about the content of this release are available in the release note [here](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/cmsis_device_g0/blob/master/Release_Notes.html).
+
 ## Compatibility information
 
 In this table, you can find the successive versions of this CMSIS Device component, in-line with the corresponding versions of the full MCU package:
@@ -27,6 +31,7 @@ CMSIS Device G0 | CMSIS Core | Was delivered in the full MCU package
 --------------- | ---------- | -------------------------------------
 Tag v1.2.0 | Tag v4.5_cm0 | Tag v1.2.0
 Tag v1.3.0 | Tag v5.4.0_cm0 | Tag v1.3.0
+Tag v1.4.0 | Tag v5.6.0_cm0 | Tag v1.4.0
 
 The full **STM32CubeG0** MCU package is available [here](https://github.com/STMicroelectronics/STM32CubeG0).
 
