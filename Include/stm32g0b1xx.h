@@ -23,6 +23,7 @@
   *
   ******************************************************************************
   */
+
 /** @addtogroup CMSIS_Device
   * @{
   */
@@ -70,7 +71,7 @@ typedef enum
 /******  Cortex-M0+ Processor Exceptions Numbers ***************************************************************/
   NonMaskableInt_IRQn         = -14,    /*!< 2 Non Maskable Interrupt                                          */
   HardFault_IRQn              = -13,    /*!< 3 Cortex-M Hard Fault Interrupt                                   */
-  SVC_IRQn                    = -5,     /*!< 11 Cortex-M SV Call Interrupt                                     */
+  SVCall_IRQn                 = -5,     /*!< 11 Cortex-M SV Call Interrupt                                     */
   PendSV_IRQn                 = -2,     /*!< 14 Cortex-M Pend SV Interrupt                                     */
   SysTick_IRQn                = -1,     /*!< 15 Cortex-M System Tick Interrupt                                 */
 /******  STM32G0xxxx specific Interrupt Numbers ****************************************************************/
@@ -694,10 +695,6 @@ typedef struct
   __IO uint32_t TXBD;             /*!<Transmission buffer address*/
   __IO uint32_t RXBD;             /*!<Reception buffer address */
 } USB_DRD_PMABuffDescTypeDef;
-
-/**
-  * @}
-  */
 /**
   * @brief VREFBUF
   */
@@ -740,7 +737,6 @@ typedef struct
   __IO uint32_t RX_ORDEXT2;    /*!< UCPD Rx ordered set extension 2 register,  Address offset: 0x38 */
 
 } UCPD_TypeDef;
-
 /**
   * @}
   */
@@ -4001,7 +3997,7 @@ typedef struct
 #define FLASH_CR_MER1_Msk                      (0x1UL << FLASH_CR_MER1_Pos)       /*!< 0x00000004 */
 #define FLASH_CR_MER1                          FLASH_CR_MER1_Msk
 #define FLASH_CR_PNB_Pos                       (3U)
-#define FLASH_CR_PNB_Msk                       (0x7FUL << FLASH_CR_PNB_Pos)       /*!< 0x000003F8 */
+#define FLASH_CR_PNB_Msk                       (0x3FFUL << FLASH_CR_PNB_Pos)       /*!< 0x00001FF8 */
 #define FLASH_CR_PNB                           FLASH_CR_PNB_Msk
 #define FLASH_CR_BKER_Pos                      (13U)
 #define FLASH_CR_BKER_Msk                      (0x1UL << FLASH_CR_BKER_Pos)       /*!< 0x00002000 */
@@ -10651,7 +10647,8 @@ typedef struct
 /* EndPoint Register MASK (no toggle fields) */
 #define USB_CHEP_REG_MASK                          (USB_CHEP_ERRRX | USB_CHEP_ERRTX | USB_CHEP_LSEP | \
                                                     USB_CHEP_DEVADDR | USB_CHEP_VTRX | USB_CHEP_SETUP | \
-                                                    USB_CHEP_UTYPE | USB_CHEP_KIND | USB_CHEP_VTTX | USB_CHEP_ADDR) /* =8f8f */
+                                                    USB_CHEP_UTYPE | USB_CHEP_KIND | USB_CHEP_VTTX | USB_CHEP_ADDR |\
+                                                    USB_CHEP_NAK) /* 0x07FF8F8F */
 
 #define USB_CHEP_TX_DTOGMASK                       (USB_CHEP_TX_STTX | USB_CHEP_REG_MASK)
 #define USB_CHEP_RX_DTOGMASK                       (USB_CHEP_RX_STRX | USB_CHEP_REG_MASK)
@@ -11233,6 +11230,16 @@ typedef struct
 /*********************** USB OTG HCD Instances ********************************/
 #define IS_HCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_DRD_FS))
 
+/******************************************************************************/
+/*  For a painless codes migration between the STM32G0xx device product       */
+/*  lines, the aliases defined below are put in place to overcome the         */
+/*  differences in the interrupt handlers and IRQn definitions.               */
+/*  No need to update developed interrupt code when moving across             */
+/*  product lines within the same STM32G0 Family                              */
+/******************************************************************************/
+/* Aliases for IRQn_Type */
+#define SVC_IRQn              SVCall_IRQn
+
 /**
   * @}
   */
@@ -11258,5 +11265,3 @@ typedef struct
   /**
   * @}
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

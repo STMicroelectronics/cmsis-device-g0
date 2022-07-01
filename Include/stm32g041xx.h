@@ -23,6 +23,7 @@
   *
   ******************************************************************************
   */
+
 /** @addtogroup CMSIS_Device
   * @{
   */
@@ -70,7 +71,7 @@ typedef enum
 /******  Cortex-M0+ Processor Exceptions Numbers ***************************************************************/
   NonMaskableInt_IRQn         = -14,    /*!< 2 Non Maskable Interrupt                                          */
   HardFault_IRQn              = -13,    /*!< 3 Cortex-M Hard Fault Interrupt                                   */
-  SVC_IRQn                    = -5,     /*!< 11 Cortex-M SV Call Interrupt                                     */
+  SVCall_IRQn                 = -5,     /*!< 11 Cortex-M SV Call Interrupt                                     */
   PendSV_IRQn                 = -2,     /*!< 14 Cortex-M Pend SV Interrupt                                     */
   SysTick_IRQn                = -1,     /*!< 15 Cortex-M System Tick Interrupt                                 */
 /******  STM32G0xxxx specific Interrupt Numbers ****************************************************************/
@@ -588,6 +589,9 @@ typedef struct
 } RNG_TypeDef;
 
 
+/**
+  * @}
+  */
 
 /** @addtogroup Peripheral_memory_map
   * @{
@@ -2721,7 +2725,7 @@ typedef struct
 #define FLASH_CR_MER1_Msk                      (0x1UL << FLASH_CR_MER1_Pos)       /*!< 0x00000004 */
 #define FLASH_CR_MER1                          FLASH_CR_MER1_Msk
 #define FLASH_CR_PNB_Pos                       (3U)
-#define FLASH_CR_PNB_Msk                       (0x1FUL << FLASH_CR_PNB_Pos)       /*!< 0x000000F8 */
+#define FLASH_CR_PNB_Msk                       (0x3FFUL << FLASH_CR_PNB_Pos)       /*!< 0x00001FF8 */
 #define FLASH_CR_PNB                           FLASH_CR_PNB_Msk
 #define FLASH_CR_STRT_Pos                      (16U)
 #define FLASH_CR_STRT_Msk                      (0x1UL << FLASH_CR_STRT_Pos)       /*!< 0x00010000 */
@@ -8247,6 +8251,16 @@ typedef struct
 #define IS_WWDG_ALL_INSTANCE(INSTANCE)  ((INSTANCE) == WWDG)
 
 
+/******************************************************************************/
+/*  For a painless codes migration between the STM32G0xx device product       */
+/*  lines, the aliases defined below are put in place to overcome the         */
+/*  differences in the interrupt handlers and IRQn definitions.               */
+/*  No need to update developed interrupt code when moving across             */
+/*  product lines within the same STM32G0 Family                              */
+/******************************************************************************/
+/* Aliases for IRQn_Type */
+#define SVC_IRQn              SVCall_IRQn
+
 /**
   * @}
   */
@@ -8272,5 +8286,3 @@ typedef struct
   /**
   * @}
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
