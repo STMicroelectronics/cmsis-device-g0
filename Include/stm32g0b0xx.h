@@ -3133,9 +3133,6 @@ typedef struct
 #define FLASH_SR_CFGBSY_Pos                    (18U)
 #define FLASH_SR_CFGBSY_Msk                    (0x1UL << FLASH_SR_CFGBSY_Pos)   /*!< 0x00040000 */
 #define FLASH_SR_CFGBSY                        FLASH_SR_CFGBSY_Msk
-#define FLASH_SR_PESD_Pos                      (19U)
-#define FLASH_SR_PESD_Msk                      (0x1UL << FLASH_SR_PESD_Pos)   /*!< 0x00080000 */
-#define FLASH_SR_PESD                          FLASH_SR_PESD_Msk
 
 /*******************  Bits definition for FLASH_CR register  ******************/
 #define FLASH_CR_PG_Pos                        (0U)
