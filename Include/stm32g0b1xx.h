@@ -5316,15 +5316,15 @@ typedef struct
 #define PWR_CR2_PVDRT_0           (0x1UL << PWR_CR2_PVDRT_Pos)                 /*!< 0x00000010 */
 #define PWR_CR2_PVDRT_1           (0x2UL << PWR_CR2_PVDRT_Pos)                 /*!< 0x00000020 */
 #define PWR_CR2_PVDRT_2           (0x4UL << PWR_CR2_PVDRT_Pos)                 /*!< 0x00000040 */
-#define PWR_CR2_PVMEN_USB_Pos     (8U)
-#define PWR_CR2_PVMEN_USB_Msk     (0x1UL << PWR_CR2_PVMEN_USB_Pos)             /*!< 0x00000100 */
-#define PWR_CR2_PVMEN_USB         PWR_CR2_PVMEN_USB_Msk                        /*!< USB Peripheral Voltage Monitor Enable */
-#define PWR_CR2_IOSV_Pos          (9U)
-#define PWR_CR2_IOSV_Msk          (0x1UL << PWR_CR2_IOSV_Pos)                  /*!< 0x00000200 */
-#define PWR_CR2_IOSV              PWR_CR2_IOSV_Msk                             /*!< VDDIO2 independent I/Os Supply Valid */
-#define PWR_CR2_USV_Pos           (10U)
-#define PWR_CR2_USV_Msk           (0x1UL << PWR_CR2_USV_Pos)                   /*!< 0x00000400 */
-#define PWR_CR2_USV               PWR_CR2_USV_Msk                              /*!< VDD USB Supply Valid */
+#define PWR_CR2_PVMEN_DAC_Pos     (7U)
+#define PWR_CR2_PVMEN_DAC_Msk     (0x1UL << PWR_CR2_PVMEN_DAC_Pos)             /*!< 0x00000080 */
+#define PWR_CR2_PVMEN_DAC         PWR_CR2_PVMEN_DAC_Msk                        /*!< DAC supply voltage monitoring enable */
+#define PWR_CR2_PVM_VDDIO2_Pos    (8U)
+#define PWR_CR2_PVM_VDDIO2_Msk    (0x7UL << PWR_CR2_PVM_VDDIO2_Pos)            /*!< 0x00000700 */
+#define PWR_CR2_PVM_VDDIO2        PWR_CR2_PVM_VDDIO2_Msk                       /*!< VDDIO2 supply voltage monitoring */
+#define PWR_CR2_PVM_VDDIO2_0      (0x1UL << PWR_CR2_PVM_VDDIO2_Pos)            /*!< 0x00000100 */
+#define PWR_CR2_PVM_VDDIO2_1      (0x2UL << PWR_CR2_PVM_VDDIO2_Pos)            /*!< 0x00000200 */
+#define PWR_CR2_PVM_VDDIO2_2      (0x4UL << PWR_CR2_PVM_VDDIO2_Pos)            /*!< 0x00000400 */
 
 /********************  Bit definition for PWR_CR3 register  ********************/
 #define PWR_CR3_EWUP_Pos          (0U)
@@ -5435,9 +5435,12 @@ typedef struct
 #define PWR_SR2_PVDO_Pos          (11U)
 #define PWR_SR2_PVDO_Msk          (0x1UL << PWR_SR2_PVDO_Pos)                  /*!< 0x00000800 */
 #define PWR_SR2_PVDO              PWR_SR2_PVDO_Msk                             /*!< Power voltage detector output */
-#define PWR_SR2_PVMO_USB_Pos      (13U)
-#define PWR_SR2_PVMO_USB_Msk      (0x1UL << PWR_SR2_PVMO_USB_Pos)              /*!< 0x00002000 */
-#define PWR_SR2_PVMO_USB          PWR_SR2_PVMO_USB_Msk                         /*!< USB Peripheral Voltage Monitoring Output */
+#define PWR_SR2_PVMO_VDDIO2_Pos   (13U)
+#define PWR_SR2_PVMO_VDDIO2_Msk   (0x1UL << PWR_SR2_PVMO_VDDIO2_Pos)           /*!< 0x00002000 */
+#define PWR_SR2_PVMO_VDDIO2       PWR_SR2_PVMO_VDDIO2_Msk                      /*!< Power Voltage Monitoring Output */
+#define PWR_SR2_PVMO_DAC_Pos      (15U)
+#define PWR_SR2_PVMO_DAC_Msk      (0x1UL << PWR_SR2_PVMO_DAC_Pos)              /*!< 0x00008000 */
+#define PWR_SR2_PVMO_DAC          PWR_SR2_PVMO_DAC_Msk                         /*!< VDDA monitoring output flag */
 
 /********************  Bit definition for PWR_SCR register  ********************/
 #define PWR_SCR_CWUF_Pos          (0U)
@@ -6046,6 +6049,19 @@ typedef struct
 #define PWR_PDCRF_PD13_Msk        (0x1UL << PWR_PDCRF_PD13_Pos)                /*!< 0x00002000 */
 #define PWR_PDCRF_PD13            PWR_PDCRF_PD13_Msk                           /*!< Pin PF13 Pull-Down set */
 
+/* Aliases for PWR_CR2 since RM0444 Revision 6*/
+#define PWR_CR2_PVMEN_USB_Pos     (8U)
+#define PWR_CR2_PVMEN_USB_Msk     (0x1UL << PWR_CR2_PVMEN_USB_Pos)             /*!< 0x00000100 */
+#define PWR_CR2_PVMEN_USB         PWR_CR2_PVMEN_USB_Msk                        /*!< USB Peripheral Voltage Monitor Enable */
+#define PWR_CR2_IOSV_Pos          (9U)
+#define PWR_CR2_IOSV_Msk          (0x1UL << PWR_CR2_IOSV_Pos)                  /*!< 0x00000200 */
+#define PWR_CR2_IOSV              PWR_CR2_IOSV_Msk                             /*!< VDDIO2 independent I/Os Supply Valid */
+#define PWR_CR2_USV_Pos           (10U)
+#define PWR_CR2_USV_Msk           (0x1UL << PWR_CR2_USV_Pos)                   /*!< 0x00000400 */
+#define PWR_CR2_USV               PWR_CR2_USV_Msk                              /*!< VDD USB Supply Valid */
+#define PWR_SR2_PVMO_USB_Pos      (13U)
+#define PWR_SR2_PVMO_USB_Msk      (0x1UL << PWR_SR2_PVMO_USB_Pos)              /*!< 0x00002000 */
+#define PWR_SR2_PVMO_USB          PWR_SR2_PVMO_USB_Msk                         /*!< USB Peripheral Voltage Monitoring Output */
 /******************************************************************************/
 /*                                                                            */
 /*                           Reset and Clock Control                          */
@@ -7005,6 +7021,9 @@ typedef struct
 #define RTC_WAKEUP_SUPPORT
 #define RTC_BACKUP_SUPPORT
 #define RTC_TAMPER3_SUPPORT          /*!< TAMPER3 only available on some devices */
+#define RTC_TAMP_INT_NB        4u
+#define RTC_TAMP_NB            3u
+#define RTC_BACKUP_NB          5u
 
 /********************  Bits definition for RTC_TR register  *******************/
 #define RTC_TR_PM_Pos                (22U)
@@ -8891,7 +8910,7 @@ typedef struct
 
 /*******************  Bit definition for TIM_CCR5 register  *******************/
 #define TIM_CCR5_CCR5_Pos         (0U)
-#define TIM_CCR5_CCR5_Msk         (0xFFFFFFFFUL << TIM_CCR5_CCR5_Pos)          /*!< 0xFFFFFFFF */
+#define TIM_CCR5_CCR5_Msk         (0xFFFFUL << TIM_CCR5_CCR5_Pos)              /*!< 0xFFFF */
 #define TIM_CCR5_CCR5             TIM_CCR5_CCR5_Msk                            /*!<Capture/Compare 5 Value */
 #define TIM_CCR5_GC5C1_Pos        (29U)
 #define TIM_CCR5_GC5C1_Msk        (0x1UL << TIM_CCR5_GC5C1_Pos)                /*!< 0x20000000 */
