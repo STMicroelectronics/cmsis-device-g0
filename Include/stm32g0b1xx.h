@@ -2983,9 +2983,9 @@ typedef struct
 #define EXTI_RPR2_RPIF34             EXTI_RPR2_RPIF34_Msk                       /*!< Rising Pending Interrupt Flag on line 34 */
 
 /*******************  Bit definition for EXTI_FPR2 register  ******************/
-#define EXTI_FPR2_RPIF34_Pos         (2U)
-#define EXTI_FPR2_RPIF34_Msk         (0x1UL << EXTI_FPR2_RPIF34_Pos)            /*!< 0x00000004 */
-#define EXTI_FPR2_RPIF34             EXTI_FPR2_RPIF34_Msk                       /*!< Rising Pending Interrupt Flag on line 34 */
+#define EXTI_FPR2_FPIF34_Pos         (2U)
+#define EXTI_FPR2_FPIF34_Msk         (0x1UL << EXTI_FPR2_FPIF34_Pos)            /*!< 0x00000004 */
+#define EXTI_FPR2_FPIF34             EXTI_FPR2_FPIF34_Msk                       /*!< Falling Pending Interrupt Flag on line 34 */
 
 /*****************  Bit definition for EXTI_EXTICR1 register  **************/
 #define EXTI_EXTICR1_EXTI0_Pos       (0U)
@@ -3326,6 +3326,11 @@ typedef struct
 #define EXTI_EMR2_EM36_Pos           (4U)
 #define EXTI_EMR2_EM36_Msk           (0x1UL << EXTI_EMR2_EM36_Pos)             /*!< 0x00000010 */
 #define EXTI_EMR2_EM36               EXTI_EMR2_EM36_Msk                        /*!< Event Mask on line 36 */
+
+/* Legacy defines */
+#define EXTI_FPR2_RPIF34_Pos         EXTI_FPR2_FPIF34_Pos
+#define EXTI_FPR2_RPIF34_Msk         EXTI_FPR2_FPIF34_Msk
+#define EXTI_FPR2_RPIF34             EXTI_FPR2_FPIF34
 
 /******************************************************************************/
 /*                                                                            */
